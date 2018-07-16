@@ -35,7 +35,6 @@ observer_t *observer_new(void (update)(int argc, const void *argv[])) {
 
 void observer_delete(observer_t *observer) {
   if (observer != NULL) {
-    free(observer->update);
     free(observer);
   }
 }
