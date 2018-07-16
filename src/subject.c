@@ -31,7 +31,7 @@ struct subject_t {
 };
 
 subject_t *subject_new(void) {
-  subject_t *subject = (subject_t *) malloc(sizeof(subject_t));
+  subject_t *subject = malloc(sizeof(subject_t));
   subject->head = NULL;
 
   return subject;
@@ -52,7 +52,7 @@ void subject_delete(subject_t *subject) {
 }
 
 void subject_attach(subject_t *subject, const observer_t *observer) {
-  observer_list_t *head = (observer_list_t *) malloc(sizeof(observer_list_t));
+  observer_list_t *head = malloc(sizeof(observer_list_t));
   head->observer = observer;
   head->next = subject->head;
 

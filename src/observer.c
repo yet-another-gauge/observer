@@ -27,7 +27,7 @@ struct observer_t {
 };
 
 observer_t *observer_new(void (update)(int argc, const void *argv[])) {
-  observer_t *observer = (struct observer_t *) malloc(sizeof(struct observer_t));
+  observer_t *observer = malloc(sizeof(struct observer_t));
   observer->update = update;
 
   return observer;
