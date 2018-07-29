@@ -24,10 +24,14 @@ typedef struct observer_t observer_t;
 
 /**
  * @brief Allocate a struct observer_t, intended to be used as a observer.
+ *  The current implementation of the observer provides support for contextual data.
+ *  This contextual data is given to the subject when attaching the callback.
+ *  In return, the subject will provide this contextual data back to the observer as a parameter of the callback.
+ * @param [in] context
  * @param [in] update
  * @return The observer
  */
-observer_t *observer_new(void (update)(int argc, const void *argv[]));
+observer_t *observer_new(const void *context, void (update)(const void *context, int argc, const void *argv[]));
 
 /**
  * @brief Free the memory for the given observer.

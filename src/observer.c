@@ -23,11 +23,13 @@
 #include "observer.h"
 
 struct observer_t {
-  void (*update)(int argc, const void *argv[]);
+  const void *context; /* no memory management needed for the following field for now */
+  void (*update)(const void *context, int argc, const void *argv[]);
 };
 
-observer_t *observer_new(void (update)(int argc, const void *argv[])) {
+observer_t *observer_new(const void *context, void (update)(const void *context, int argc, const void *argv[])) {
   observer_t *observer = malloc(sizeof(struct observer_t));
+  observer->context = context;
   observer->update = update;
 
   return observer;
@@ -40,5 +42,5 @@ void observer_delete(observer_t *observer) {
 }
 
 void observer_update(const observer_t *observer, int argc, const void *argv[]) {
-  observer->update(argc, argv);
+  observer->update(observer->context, argc, argv);
 }
