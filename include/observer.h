@@ -31,7 +31,7 @@ typedef struct observer_t observer_t;
  * @param [in] update
  * @return The observer
  */
-observer_t *observer_new(const void *context, void (update)(const void *context, int argc, const void *argv[]));
+observer_t *observer_new(const void *context, void (*update)(const void *context, int argc, const void *argv[]));
 
 /**
  * @brief Free the memory for the given observer.

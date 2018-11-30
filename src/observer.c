@@ -26,8 +26,9 @@ struct observer_t {
   void (*update)(const void *context, int argc, const void *argv[]);
 };
 
-observer_t *observer_new(const void *context, void (update)(const void *context, int argc, const void *argv[])) {
-  observer_t *observer = malloc(sizeof(struct observer_t));
+observer_t *observer_new(const void *context, void (*update)(const void *context, int argc, const void *argv[])) {
+  observer_t *observer = malloc(sizeof(observer_t));
+
   observer->context = context;
   observer->update = update;
 
