@@ -1,4 +1,3 @@
-# Observer
 > A pure C implementation of the observer pattern
 
 ## Examples of usage
